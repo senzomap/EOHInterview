@@ -1,0 +1,6 @@
+za/co/digitalplatoon/invoiceservice/invoice/Application.class
+za/co/digitalplatoon/invoiceservice/invoice/Invoice.class
+za/co/digitalplatoon/invoiceservice/invoice/InvoiceRepository.class
+za/co/digitalplatoon/invoiceservice/invoice/InvoiceController.class
+za/co/digitalplatoon/invoiceservice/invoice/LineItem.class
+za/co/digitalplatoon/invoiceservice/invoice/LineItemRepository.class
