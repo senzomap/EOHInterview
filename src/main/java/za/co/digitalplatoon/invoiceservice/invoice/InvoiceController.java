@@ -62,9 +62,11 @@ public class InvoiceController {
     @RequestMapping(value = "/invoices", method = RequestMethod.POST)
     @Consumes(MediaType.APPLICATION_JSON)
     public String addInvoice(@RequestBody Invoice invoice){
-        invoice.getLineItemList().forEach((item) -> {
+        List<LineItem> items = invoice.getLineItemList();
+        for(LineItem item: items){
             itemRepository.save(item);
-        });
+        }
+        
         invoiceRepository.save(invoice);
          
         return invoice.getClient()+"'s invoice saved successfully";                 

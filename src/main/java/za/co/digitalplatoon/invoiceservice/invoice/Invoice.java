@@ -106,9 +106,11 @@ public class Invoice implements Serializable {
     public BigDecimal getSubTotal(){
         List<LineItem> items = getLineItemList();
         double sum=0.0;
-        sum = items.stream().map((item) -> item.getLineItemTotal()).map((lineItemTotal) -> lineItemTotal.doubleValue()).reduce(sum, (accumulator, _item) -> accumulator + _item);
+        for(LineItem item:items){
+            BigDecimal lineItemTotal = item.getLineItemTotal();
+            sum+=lineItemTotal.doubleValue();
+        }
         BigDecimal subTotal = BigDecimal.valueOf(sum);
-        subTotal.setScale(BigDecimal.ROUND_HALF_UP);
         return subTotal;
     }
     /**
@@ -116,7 +118,6 @@ public class Invoice implements Serializable {
      * @return 
      */
     public BigDecimal getVat(){
-        
         return getSubTotal().multiply(BigDecimal.valueOf((vatRate/100.00)));
     }
     
